@@ -25,6 +25,10 @@ _SPARK_SQL_TYPE_MAP = {
 }
 
 
+def proto3_message_to_spark_dataframe():
+    pass
+
+
 def proto3_message_type_to_spark_schema(
     message_type: GeneratedProtocolMessageType,
 ) -> StructType:

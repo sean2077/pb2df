@@ -2,7 +2,12 @@
 
 A python module for converting proto3 type/object to spark dafaframe object.
 
-# Install
+Now supporting the following:
+
+- [x] proto3 type to spark schema
+- [ ] proto3 object to spark dataframe
+
+## Install
 
 ```bash
 pip3 install .
@@ -10,7 +15,7 @@ pip3 install .
 pip3 install git+https://github.com/zhangxianbing/pb2df
 ```
 
-# Test
+## Test
 
 ```bash
 pytest tests
