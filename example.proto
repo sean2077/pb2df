@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
 package example;
 
 message SimpleMessage { int32 field = 1; }
@@ -12,6 +15,12 @@ message KeyValueMessage {
 message MapMessage {
   repeated KeyValueMessage repeated_keyvalue_field = 1;
   map<string, int32> map_field = 2;
+}
+
+message TimeMessage {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+  google.protobuf.Duration duration = 3;
 }
 
 message ComplexMessage {
@@ -40,4 +49,6 @@ message ComplexMessage {
   map<string, int32> simple_map_field = 21;
   map<string, MapMessage> complex_map_field = 22;
   repeated MapMessage repeated_map_field = 23;
+  map<string, TimeMessage> map_times_field = 24;
+  repeated TimeMessage repeated_times_field = 25;
 }

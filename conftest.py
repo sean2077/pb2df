@@ -34,7 +34,6 @@ map_msg_schema = types.StructType(
     ]
 )
 
-
 complex_msg_schema = types.StructType(
     [
         types.StructField("double_field", types.DoubleType()),
