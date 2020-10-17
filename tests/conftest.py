@@ -3,8 +3,11 @@
 import pytest
 from collections import namedtuple
 
-from pyspark.sql import types
 import example_pb2
+from pyspark.sql import types
+from google.protobuf.duration_pb2 import Duration
+from google.protobuf.timestamp_pb2 import Timestamp
+from pb2df.convert import proto3_message_type_to_spark_schema
 
 
 TestCase = namedtuple("TestCase", ("pb_msg_type", "expected_schema"))
@@ -31,6 +34,18 @@ map_msg_schema = types.StructType(
         types.StructField(
             "map_field", types.MapType(types.StringType(), types.IntegerType())
         ),
+    ]
+)
+
+# TODO: revise fake test
+pb_duration_schema = proto3_message_type_to_spark_schema(Duration)
+pb_timestamp_schema = proto3_message_type_to_spark_schema(Timestamp)
+
+time_msg_schema = types.StructType(
+    [
+        types.StructField("start", pb_timestamp_schema),
+        types.StructField("end", pb_timestamp_schema),
+        types.StructField("duration", pb_duration_schema),
     ]
 )
 
@@ -65,6 +80,10 @@ complex_msg_schema = types.StructType(
             "complex_map_field", types.MapType(types.StringType(), map_msg_schema)
         ),
         types.StructField("repeated_map_field", types.ArrayType(map_msg_schema)),
+        types.StructField(
+            "map_times_field", types.MapType(types.StringType(), time_msg_schema)
+        ),
+        types.StructField("repeated_times_field", types.ArrayType(time_msg_schema)),
     ]
 )
 
