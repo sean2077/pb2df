@@ -4,6 +4,14 @@ from setuptools.command.test import test as TestCommand
 
 import pb2df
 
+requirements = ["protobuf>=3.13.0", "pyspark>=3.0.0"]
+setup_requirements = [
+    "pytest-runner",
+]
+test_requirements = [
+    "pytest>=6",
+]
+
 
 class PyTest(TestCommand):
     user_options = [("pytest-args=", "a", "Arguments to pass to py.test")]
@@ -27,16 +35,18 @@ class PyTest(TestCommand):
 
 setup(
     name="pb2df",
+    description="A python module for converting proto3 type/object to spark dafaframe object.",
+    long_description=__doc__,
     version=pb2df.__version__,
     author=pb2df.__author__,
-    author_email="",
-    description="Convert ProtoBuf objects to Spark DataFrame.",
-    long_description=__doc__,
+    author_email=pb2df.__email__,
     url="https://github.com/zhangxianbing/pb2df",
     packages=find_packages(),
-    zip_safe=False,
     platforms="any",
-    install_requires=["protobuf"],
-    tests_require=["pytest"],
+    setup_requires=setup_requirements,
+    install_requires=requirements,
+    tests_require=test_requirements,
     cmdclass={"test": PyTest},
+    test_suite="tests",
+    zip_safe=False,
 )
