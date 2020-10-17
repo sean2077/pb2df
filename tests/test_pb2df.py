@@ -1,6 +1,6 @@
 """pytest file for testing pb2df"""
 import example_pb2
-from pb2df import proto3_message_type_to_spark_schema
+from pb2df.convert import proto3_message_type_to_spark_schema
 
 
 def _test_schema(pb_msg_type, expected_schema):
