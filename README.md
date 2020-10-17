@@ -1,6 +1,6 @@
 # Pb2DF
 
-A python module for converting proto3 type object to spark dafaframe type object.
+A python module for converting proto3 type/object to spark dafaframe object.
 
 # Test
 ```bash
