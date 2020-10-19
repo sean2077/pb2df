@@ -2,7 +2,7 @@
 
 A python module for converting proto3 type/object to spark dafaframe object.
 
-Now supporting the following:
+## Features
 
 - [x] proto3 type to spark schema
 - [ ] proto3 object to spark dataframe
