@@ -1,6 +1,6 @@
 # Pb2DF
 
-A python module for converting proto3 type/object to spark dafaframe object.
+A python module for converting Protobuf(3) Message type/object to Spark DafaFrame object.
 
 ## Features
 
