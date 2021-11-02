@@ -1,5 +1,6 @@
 import sys
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 from setuptools.command.test import test as TestCommand
 
 import pb2df
@@ -35,7 +36,7 @@ class PyTest(TestCommand):
 
 setup(
     name="pb2df",
-    description="A python module for converting proto3 type/object to spark dafaframe object.",
+    description="A python module for converting proto3 type/object to spark dataframe object.",
     long_description=__doc__,
     version=pb2df.__version__,
     author=pb2df.__author__,

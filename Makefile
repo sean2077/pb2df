@@ -42,6 +42,9 @@ clean-pyc: ## remove Python file artifacts
 lint: ## check style with black
 	find $(NAME) -name '*.py' -type f -not -path "*/pb/*" -not -path "*/data/*" -exec black {} +
 
+test: ## unit tests
+	PYTHONPATH=. pytest tests
+
 docs: ## format docs
 	doctoc --gitlab README.md
 
