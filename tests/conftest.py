@@ -1,14 +1,13 @@
 """pytest fixtures"""
 
-import pytest
 from collections import namedtuple
 
-import example_pb2
-from pyspark.sql import types
+import pytest
 from google.protobuf.duration_pb2 import Duration
 from google.protobuf.timestamp_pb2 import Timestamp
-from pb2df.convert import proto3_message_type_to_spark_schema
-
+from pb import example_pb2
+from pb2df import schema_for
+from pyspark.sql import types
 
 TestCase = namedtuple("TestCase", ("pb_msg_type", "expected_schema"))
 
@@ -38,8 +37,8 @@ map_msg_schema = types.StructType(
 )
 
 # TODO: revise fake test
-pb_duration_schema = proto3_message_type_to_spark_schema(Duration)
-pb_timestamp_schema = proto3_message_type_to_spark_schema(Timestamp)
+pb_duration_schema = schema_for(Duration.DESCRIPTOR)
+pb_timestamp_schema = schema_for(Timestamp.DESCRIPTOR)
 
 time_msg_schema = types.StructType(
     [
